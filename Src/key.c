@@ -1,4 +1,5 @@
 #include "key.h"
+#include "protocol.h"
 key_data_def rtos_key;
 
 
@@ -286,5 +287,59 @@ void deal_key_value(unsigned key_value)
   		}
 }
 
+
+void Deal_KeyBoard(void)
+{
+	if((KEY_HEAD_0 != data_from_KEYBOARD.rx_data[0]) && (KEY_HEAD_0 != data_from_KEYBOARD.rx_data[1]))
+		{return;}
+	if(data_from_KEYBOARD.rx_data[2] < MACHINE_REALY_NUMBER)//操作继电器
+		{
+			TogRelay(data_from_KEYBOARD.rx_data[2]);
+			return;
+		}
+	if(data_from_KEYBOARD.rx_data[2] < (MACHINE_REALY_NUMBER + 4))//操作窗户
+		{
+			switch(data_from_KEYBOARD.rx_data[2])
+				{
+					case 16:
+						open_windows(1);
+						break;					
+					case 17:
+						close_windows(1);
+						break;						
+					case 18:
+						open_windows(0);
+						break;						
+					case 19:
+						close_windows(0);
+						break;
+					default:
+						break;
+				}
+			return;
+		}
+	//UpLoadMachineStatus();
+	if(data_from_KEYBOARD.rx_data[2] < (MACHINE_REALY_NUMBER + 4 +4))//学习清除
+	{
+		switch(data_from_KEYBOARD.rx_data[2])
+			{
+				case 20://学习				
+				Start_Learn_Action();
+					break;					
+				case 21://清除				
+				Start_Clear_Action();
+					break;						
+				case 22://全清
+					break;						
+				case 23://重启
+				NVIC_SystemReset();
+					break;
+				default:
+					break;
+			}
+		return;
+	}
+
+}
 
 

@@ -19,7 +19,9 @@
 /*!!!!!     FlasSectorNum 取值范围为5-11      !!!!!!*/
 #define FLASH_ADDRESS(FlashSectorNum)	(((FlashSectorNum - 5)*FLASH_SECTION_SIZE)+ADDR_FLASH_SECTOR_5)
 
-
+/*
+flash使用第11页保存数据
+*/
 #define SAVE_FLASH_START_SECTOR	11
 #define SAVE_FLASH_ADDRESS	FLASH_ADDRESS(SAVE_FLASH_START_SECTOR)
 

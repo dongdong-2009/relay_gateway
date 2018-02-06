@@ -323,7 +323,7 @@ void client_thread(void const * arg)
 	
 }
 
-void client_prethread(int client_fd,P_S_Socket_Task_Info task_info)
+/*void client_prethread(int client_fd,P_S_Socket_Task_Info task_info)
 {
 	int ret = 0;
 	unsigned char client_speace;
@@ -375,7 +375,7 @@ void client_prethread(int client_fd,P_S_Socket_Task_Info task_info)
 				vTaskDelete(task_info->client.client_task_handle[client_speace]);
 			}
 	 	}
-}
+}*/
 
 osThreadId start_client_prethread(int client_fd,P_S_Socket_Task_Info task_info)
 {
@@ -477,60 +477,6 @@ void socket_tcp_Concurrency_server_task(void const * argument)//²¢·¢
 				client_fd = accept(s, (struct sockaddr *) &cli_sockaddr, (socklen_t*)&socklen);	
 				start_client_prethread(client_fd,task_info);
 			}
-	/*if(-1 == client_fd)
-		{
-			//printf("accept error!\r\n");
-			close(s);		
-			goto start_server;;		
-		}
-	else
-		{
-			//printf("client_id = %d\r\n",client_fd);
-			task_info->client_id = client_fd;
-		}
-	
-	 for(;;)
-	{	
-		ret=read(client_fd,task_info->recv_buf,task_info->buf_length);
-		task_info->recv_length = ret;
-		if(ret > 0)
-			{
-				//g_socket_num = task_info->socket_num;
-				if(task_info->socket_deal_function)
-					{
-						task_info->socket_deal_function((void*)(task_info));
-						if(task_info->needDISCONNECT == 0X36)
-							{
-								//shutdown(s,2);					
-								//shutdown(client_fd,2);
-								//close(s);					
-								close(client_fd);
-								goto accept_client;
-								
-							}
-					}
-				else
-					{
-						write(client_fd,task_info->recv_buf,ret);
-					}
-				task_info->recv_ok = 1;
-			}
-		if(ret==-1)
-			{
-				close(s);					
-				close(client_fd);
-				goto start_server;
-			}
-		if(ret == 0)
-			{
-			
-				close(s);	
-				//shutdown(client_fd,2);
-				close(client_fd);		
-				goto start_server;
-			}
-	 	}*/
-
 }
 
 

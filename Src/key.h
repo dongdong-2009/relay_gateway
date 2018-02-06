@@ -7,7 +7,8 @@
 #define key_long_press(x)  (0X21 +3*((x)))
 #define key_long_long_press(x)	(0X22+3*((x)))
 
-
+#define KEY_HEAD_0	0X56
+#define KEY_HEAD_1	0X89
 
 
 #define KEY_1_TRIGGER 	0X00
@@ -198,6 +199,6 @@ extern osMessageQId KeyQueueHandle;
 
 void read_key(void);
 void deal_key_value(unsigned key_value);
-
+void Deal_KeyBoard(void);
 
 #endif

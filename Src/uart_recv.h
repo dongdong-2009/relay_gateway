@@ -65,7 +65,11 @@ typedef struct
 	unsigned char vBigRxMax;
 	PVoid_Function_PVoid Action;
 }S_GeneralSeriaRecvData,*P_S_GeneralSeriaRecvData;
-
+extern S_GeneralSeriaRecvData data_from_RS232_1;
+extern S_GeneralSeriaRecvData data_from_RS232_2;
+extern S_GeneralSeriaRecvData data_from_RS485_1;
+extern S_GeneralSeriaRecvData data_from_RS485_2;
+extern S_GeneralSeriaRecvData data_from_KEYBOARD;
 
 
 

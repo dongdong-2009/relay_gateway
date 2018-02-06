@@ -107,6 +107,8 @@ void UploadData(unsigned char function_code,unsigned char* args)
 		{
 			MachineInfoCfg.Ctrl_Side[0].send_to_ctrl_side(SendBuff,(PROTOCOL_ARG_LENGTH + 10));
 		}
+	
+	HAL_UART_Transmit(&KEY_BOARD_COM, (unsigned char*)SendBuff, (PROTOCOL_ARG_LENGTH + 10), 500);
 }
 
 

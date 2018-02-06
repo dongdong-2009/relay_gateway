@@ -50,7 +50,7 @@ typedef struct
 #define MAX_MAP_NUM	16
 typedef struct
 {
-	unsigned int map_shape;
+	unsigned int map_shape;//保存的cell理论保存cell上限32
 	unsigned char* next_free_addr;
 	unsigned int next_free_offset;
 	S_CellInfo cell_info[MAX_MAP_NUM];	

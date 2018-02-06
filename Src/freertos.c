@@ -231,6 +231,7 @@ void DealSerialTask(void const * argument)
 				break;
 
 			case KEY_BOARD_MSG:
+				Deal_KeyBoard();
 				break;
 
 			default:
@@ -306,6 +307,7 @@ void DelayStartUpTask(void const * argument)
   
   InitUDPCtrlServer();
   osDelay(1000);
+  UpLoadMachineStatus();
   
   //init_flash_map();
   

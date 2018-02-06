@@ -161,7 +161,7 @@ unsigned char Save_Data(cell_name cell,unsigned char* data,unsigned short size)
 			memcopy((char*)data, (char*)target_address, size);		
 			
 		}
-	SAVE_UPDATED_DATA();
+	SAVE_UPDATED_DATA();//将ram缓存中的数据重新写入到flash中
 	return 1;
 }
 
@@ -183,8 +183,8 @@ unsigned char Read_Data(cell_name cell,unsigned char* data,unsigned short size)
 
 void init_flash_map(void)
 {
-	//FORCE_RESET_DATA_SPACE();//强制全清flash
-	GET_SAVEED_DATA();
+	//FORCE_RESET_DATA_SPACE();//强制全清flash 如果已经保存的数据的结构发生变化例如添加了新的成员必须先强制全清flash
+	GET_SAVEED_DATA();//将flash中的最新数据加载到ram缓存中
 }
 
 

@@ -745,6 +745,7 @@ void open_windows(unsigned char windows_num)
 	p_windows_info->timer = register_value_into_timer(p_windows_info->windows_set_run_time,0);
 	register_callback_function_into_timer(p_windows_info->timer,timer_windows_callback_function);	
 	
+	UpLoadMachineStatus();
 }
 
 
@@ -768,6 +769,7 @@ void close_windows(unsigned char windows_num)
 	p_windows_info->timer = register_value_into_timer(p_windows_info->windows_set_run_time,0);
 	register_callback_function_into_timer(p_windows_info->timer,timer_windows_callback_function);	
 	
+	UpLoadMachineStatus();
 }
 
 
